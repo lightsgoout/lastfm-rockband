@@ -1,0 +1,26 @@
+body {
+    background-image: url('/static/img/bg1.jpg');
+    background-size: cover;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+}
+
+.hero-unit {
+    background-color: rgba(255,255,255,0.8);
+}
+
+label {
+    font-size: 18px;
+    font-weight: 200;
+    line-height: 30px;
+    color: inherit;
+}
+
+a.hit-link {
+    color: black;
+
+}
+
+a.hit-link:visited {
+    color: purple;
+}

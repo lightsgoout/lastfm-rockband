@@ -1,0 +1,18 @@
+{% extends "landing.html" %}
+
+{% block recommendations %}
+<h3>Recommendations for {{ lastfm_username }}</h3>
+
+<ul>
+    {% for hit in hits %}
+        <a class="hit-link" target="_blank" href="http://www.rockband.com/songs/{{ hit.short_name }}">
+            <li class="recommendation">
+                <span class="song-name">{{ hit.name }}</span> by <span class="artist-name">{{ hit.artist }}</span> ({{ hit.year_released }} &mdash; {{ hit.genre }})
+                {% if hit.is_rb3_only %}
+                    <span class="badge-info badge">RB3 only</span>
+                {% endif %}
+            </li>
+        </a>
+    {% endfor %}
+</ul>
+{% endblock %}

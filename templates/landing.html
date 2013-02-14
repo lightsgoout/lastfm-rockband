@@ -1,0 +1,29 @@
+{% extends "index.html" %}
+
+{% block content %}
+    <form action="/recommend/" class="form-inline" id="rec_form" method="POST">
+        {% csrf_token %}
+        <div class="hero-unit" style="margin-top:50px;">
+            <h1>NICE LANDING CAPTION</h1>
+            <p>This page will recommend you Rock Band® songs given your Last.fm profile.</p>
+            <p>
+                <label for="lastfm-username">Your Last.fm username</label>
+                <input type="text" id="lastfm-username" autofocus="autofocus" required="required" name="lastfm_username">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </p>
+
+            {% block recommendations %} {% endblock %}
+        </div>
+    </form>
+
+    <script>
+        $(function() {
+            $('#rec_form').submit(function(){
+                var lastfm_username = $('#lastfm-username').val();
+                $(this).attr('action', "/recommend/" + lastfm_username + '/');
+            });
+        });
+    </script>
+
+
+{% endblock %}
