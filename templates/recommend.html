@@ -1,9 +1,22 @@
 {% extends "landing.html" %}
 
 {% block recommendations %}
-<h3>Recommendations for {{ lastfm_username }}</h3>
+<h3>{{ hits_count }} recommendations for {{ lastfm_username }} {% if loved_hits_count > 0 %} ({{ loved_hits_count }} loved tracks) {% endif %}</h3>
 
 <ul>
+
+    {% for hit in loved_hits %}
+        <a class="hit-link" target="_blank" href="http://www.rockband.com/songs/{{ hit.short_name }}">
+            <li class="recommendation-loved">
+                <span class="song-name">{{ hit.name }}</span> by <span class="artist-name">{{ hit.artist }}</span> ({{ hit.year_released }} &mdash; {{ hit.genre }})
+                <span class="badge-important badge">Loved track</span>
+                {% if hit.is_rb3_only %}
+                    <span class="badge-info badge">RB3 only</span>
+                {% endif %}
+            </li>
+        </a>
+    {% endfor %}
+
     {% for hit in hits %}
         <a class="hit-link" target="_blank" href="http://www.rockband.com/songs/{{ hit.short_name }}">
             <li class="recommendation">
