@@ -9,7 +9,7 @@ urlpatterns = patterns('',
            'template': 'landing.html'
        },
        name='landing'),
-   url(r'^recommend/(?P<lastfm_username>\w+)/$',
+   url(r'^recommend/(?P<lastfm_username>[_\.a-zA-Z0-9-]+)/$',
        view_recommends,
        name='recommend'),
 )
